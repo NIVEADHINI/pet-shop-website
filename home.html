@@ -1,0 +1,1580 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buffy Pets Header</title>
+
+  <!-- 🎨 Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: lightblue;
+    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 30px;
+  background-color: #4b85a0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.text img {
+  height: 45px;
+  object-fit: contain;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.actions input[type="text"] {
+  padding: 8px 14px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.actions input[type="text"]:focus {
+  border-color: #15757B;
+  outline: none;
+}
+
+.emoji {
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px #15757B);
+}
+    
+    /* 📱 Responsive Media Queries */
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .logo {
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+
+      .logo img {
+        width: 40px;
+        height: 40px;
+        margin: 0 0 5px;
+      }
+
+      .logo h1 {
+        font-size: 28px;
+      }
+
+      .actions {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .actions input {
+        flex: 1 1 100%;
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      .emoji {
+        font-size: 20px;
+        margin: 5px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo h1 {
+        font-size: 22px;
+      }
+
+      .emoji {
+        font-size: 18px;
+      }
+    }
+nav.nav-bar {
+      background-color: #15757B;
+      padding: 10px 20px;
+    }
+
+    .nav-items {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-items > li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 12px;
+      display: block;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-items a:hover {
+      background-color: #0056b3;
+      border-radius: 4px;
+    }
+
+    .dropdown-content {
+      display: none; /* ✅ hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      flex-direction: row;
+      gap: 30px;
+      z-index: 99;
+    }
+
+    .sub-menu {
+      min-width: 150px;
+    }
+
+    .sub-menu h4 {
+      margin: 0 0 10px;
+      color: #ec140c;
+      font-size: 16px;
+    }
+
+    .sub-menu a {
+      display: block;
+      margin: 5px 0;
+      color: #333;
+      font-weight: normal;
+    }
+
+    .sub-menu a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-items {
+        flex-direction: column;
+      }
+
+      .nav-items > li {
+        margin-bottom: 10px;
+      }
+
+      .dropdown-content {
+        position: static;
+        flex-direction: column;
+        box-shadow: none;
+        padding: 10px 0;
+      }
+    }
+    #vetsDropdown {
+        flex-direction: column;
+    }
+    .hero-banner {
+      position: relative;
+      height: 500px;
+      background-image: url('ban.jpg'); /* ⬅️ Replace with actual image path */
+      background-size: cover;
+      background-position: center;
+      overflow: hidden;
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.25);
+      z-index: 1;
+    }
+
+    .hero-text {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      font-size: 60px;
+      font-weight: 700;
+      background: linear-gradient(45deg, #ff6a00, #ee0979, #00c9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.4);
+      transform: rotate(-18deg); /* 🎯 Slanting effect */
+      animation: zoomText 2.5s ease-in-out infinite;
+      z-index: 2;
+    }
+
+    @keyframes zoomText {
+      0%, 100% {
+        transform: rotate(-18deg) scale(1);
+      }
+      50% {
+        transform: rotate(-18deg) scale(1.12);
+      }
+    }
+
+    @media screen and (max-width: 768px) {
+      .hero-text {
+        font-size: 38px;
+        top: 20px;
+        left: 20px;
+      }
+    }
+    .category-row {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px 20px;
+      flex-wrap: wrap;
+      background: #bbe3e6;
+    }
+
+    .category-item {
+      text-align: center;
+      text-decoration: none;
+      color: #333;
+      transition: transform 0.3s ease;
+    }
+
+    .category-item:hover {
+      transform: scale(1.08);
+    }
+
+    .category-image {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid #0f0e0e;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      margin-bottom: 12px;
+    }
+
+    .category-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .category-label {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    @media screen and (max-width: 768px) {
+      .category-row {
+        gap: 20px;
+        padding: 40px 10px;
+      }
+
+      .category-image {
+        width: 100px;
+        height: 100px;
+      }
+
+      .category-label {
+        font-size: 16px;
+      }
+    }
+
+     .section {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .section h1 {
+      color: #0d0d0e;
+      background-color:lightblue;
+      display: outline-box;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-size: 24px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    .card-wrapper {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+      background-color: lightblue;
+      padding-bottom: 40px;
+      padding-top: 20px;
+    }
+
+    .card {
+      position: relative;
+      width: 220px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+      overflow: hidden;
+      text-align: center;
+      padding-top: 60px;
+      border: 2px solid black;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover img {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin: 20px 0;
+      transition: transform 0.3s ease;
+    }
+
+    .half-badge {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: red;
+      color: white;
+      width: 90%;
+      max-width: 210px;
+      height: 60px;
+      border-bottom-left-radius: 60px;
+      border-bottom-right-radius: 60px;
+      font-weight: bold;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1;
+    }
+
+    .label {
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(to right, #0066cc, #260f8d);
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      padding: 20px 0;
+      width: 100%;
+      text-align: center;
+      clip-path: polygon(20% 0%, 80% 0%, 100% 100%, 0% 100%);
+      z-index: 0;
+    }
+    .section {
+      margin-bottom: 50px;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 24px;
+      color: #0d0d0e;
+      margin-bottom: 30px;
+    }
+
+    .card-row {
+      display: flex;
+      gap: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      width: 220px;
+      background: #fff;
+      gap: 40px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      text-align: center;
+      padding: 20px 15px;
+      border: 2px solid #000;
+    }
+
+    .card img {
+      width: 100%;
+      height: auto;
+      border: 2px solid black;
+      border-radius: 8px;
+    }
+
+    .stars {
+      color: #ffaa00;
+      font-size: 16px;
+      margin: 8px 0;
+    }
+
+    .product-name {
+      font-weight: bold;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+
+    .price {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 12px;
+    }
+
+    .btn {
+      background-color: #e90e0e;
+      color: white;
+      padding: 8px 14px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+.gradient-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to right, #025a83, #500581, #d47c08, #812c05, #e2600a ); /* 🌈 Customizable mix */
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+.side-img {
+  width: 220px;
+  height: auto;
+  object-fit: cover;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.side-img.left {
+  left: 30px;
+}
+
+.side-img.right {
+  right: 30px;
+}
+
+.center-text {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: rgb(14, 13, 13);
+  text-align: center;
+  z-index: 2;
+  padding: 0 80px;
+}
+
+/* Toggle Button */
+.toggle-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.toggle-btn {
+  width: 100px;
+  height: 40px;
+  background: #faf4f4;
+  border: 2px solid #900;
+  position: relative;
+  cursor: pointer;
+  border-radius: 0;
+  overflow: hidden;
+}
+
+.slider {
+  width: 56px;
+  height: 36px;
+  background: #e90606;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+  transition: left 0.3s ease;
+}
+
+.toggle-btn.active .slider {
+  left: 42px;
+}
+
+/* Cards Grid */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 5rem; /* Spaced-out rows and columns */
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #f5f3f3;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+
+.card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.card button {
+  margin-top: 0.5rem;
+  padding: 0.6rem;
+  width: 100%;
+  background: #f70404;
+  color: rgb(240, 235, 235);
+  border: none;
+  border-radius: 0;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.card button:hover {
+  background: #a00000;
+}
+
+.label-text {
+  margin-top: 0.5rem;
+  font-weight: 500;
+  color: #555;
+}
+.price-text {
+  margin-top: 0.3rem;
+  font-weight: 600;
+  color: #d8000c;
+  font-size: 1rem;
+}
+ .review-section {
+      max-width: 1100px;
+      background-color: white;
+      margin: auto;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .review-title h2 {
+      font-size: 2rem;
+      margin: 0;
+      color: #222;
+    }
+
+    .review-rating {
+      font-size: 1.2rem;
+      color: #444;
+      margin-top: 0.5rem;
+    }
+
+    .stars {
+      color: gold;
+      font-size: 1.2rem;
+      margin-left: 0.3rem;
+      letter-spacing: 2px;
+    }
+
+    .review-btn {
+      background-color: #0e796a;
+      color: white;
+      border: none;
+      padding: 0.7rem 1.2rem;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s ease;
+    }
+
+    .review-btn:hover {
+      background-color: #0099cc;
+    }
+
+    .review-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    .review-card {
+      background: white;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .review-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .review-card img {
+      width: 70px;
+      height: 70px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 0.6rem;
+      border: 2px solid #ddd;
+    }
+
+    .review-text {
+      color: #070606;
+      font-size: 0.95rem;
+      margin-top: 0.5rem;
+      min-height: 40px;
+    }
+
+    @media (max-width: 900px) {
+      .review-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .review-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .review-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+    .health-card-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10rem;
+      justify-content: center;
+    }
+
+    .health-card {
+      display: flex;
+      width: min(100vw, 500px);
+      height: 200px;
+      border: 1px solid #ccc;
+      border-radius: 0;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      background: white;
+      overflow: hidden;
+    }
+
+    .health-card-left,
+    .health-card-right {
+      flex: 1;
+      height: 100%;
+    }
+
+    .health-card-left {
+      position: relative;
+      background: linear-gradient(135deg, #0f0f0f, #8d918e, white);
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+     color:white;
+      font-size: 1.6rem;
+      font-weight: 600;
+      overflow: hidden;
+    }
+
+    .health-card-left svg.wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 80px;
+      z-index: 0;
+    }
+
+    .health-card-left span {
+      z-index: 1;
+      position: relative;
+    }
+
+    .health-card-right img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+      padding: 0;
+    }
+
+    .health-card-text {
+      text-align: center;
+      margin-top: 0.8rem;
+      font-size: 1.5rem;
+      color: #080808;
+      font-weight: 500;
+    }
+
+    @media (max-width: 1100px) {
+      .health-card {
+        width: 100%;
+        flex-direction: column;
+        height: auto;
+      }
+
+      .health-card-left {
+        height: auto;
+      }
+
+      .health-card-right img {
+        height: auto;
+      }
+    }
+   .health-card-left span {
+  color: black;
+  font-weight: bold;
+  font-size: 1.7rem;
+  text-shadow:
+    -1px -1px yellow,
+    1px -1px yellow,
+    -1px 1px yellow,
+    1px 1px yellow;
+}
+
+ h2 {
+      text-align: center;
+      color: #0096db;
+      font-size: 24px;
+      margin-bottom: 40px;
+    }
+
+    .com-card-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      justify-content: center;
+    }
+
+    .com-card {
+      display: flex;
+      align-items: center;
+      width: 480px;
+      height: 160px;
+      background-color: #fff;
+      border: 2px solid #0096db;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .com-card:hover {
+      transform: scale(1.02);
+    }
+
+    .com-card-image {
+  width: 160px; /* Previously 140px */
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #eafaff;
+}
+
+    .com-card-image img {
+      width: 140%;
+      height: 120%;
+      object-fit: contain;
+      
+    }
+  
+
+    .com-card-content {
+      flex-grow: 1;
+      padding: 14px 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .com-card-content h3 {
+      margin: 0 0 8px;
+      font-size: 16px;
+      color: #0096db;
+    }
+
+    .com-card-content p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.5;
+      color: #333;
+    }
+
+    .com-card-link {
+      align-self: flex-end;
+      color: red;
+      font-weight: bold;
+      font-size: 13px;
+      text-decoration: underline;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+.faq-section {
+  width: 950px;
+  margin: auto;
+  padding: 40px 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  text-align: left;
+}
+
+.faq-section h2 {
+  font-size: 25px;
+  color: #090a0a;
+  margin-bottom: 20px;
+  font-weight: normal;
+}
+
+.faq {
+  margin: 0;
+  padding: 0;
+}
+
+.faq h3 {
+  font-size: 20px;
+  font-weight: normal; /* ← Add this line to remove bold */
+  margin: 0;
+  color: #333;
+}
+
+.faq p {
+  font-size: 18px;
+  margin: 0;
+  color: #555;
+} 
+  footer {
+  position: relative;
+  background-color: #006d6d;
+  color: white;
+  padding: 60px 20px 120px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.input-with-button {
+  position: relative;
+  width: 90%; /* Container width stays the same */
+}
+
+.input-with-button input {
+  width: 70%;  /* 👈 Reduced from 90% to 70% */
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1em;
+}
+
+.input-with-button button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 20px;
+  background-color: #e63838;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 1em;
+}
+.input-with-button button:hover {
+  background-color: #c62828;
+}
+
+.subscribe p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Bottom Left Shipping */
+.footer-bottom-left {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgb(240, 236, 236);
+  color: black;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+/* Bottom Right Social */
+.footer-bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+</style>
+</head>
+
+ <header>
+    <div class="logo">
+      <img src="h1.gif" alt="Animated Dog">
+    </div>
+    <div class="text">
+      <img src="Text.gif" alt="Animated Text">
+    </div>
+    <div class="actions">
+      <input type="text" placeholder="Search">
+      <span class="emoji">📍</span>
+      <span class="emoji">👤</span>
+      <span class="emoji">🛒</span>
+    </div>
+  </header>
+
+  <body>
+
+  <nav class="nav-bar">
+    <ul class="nav-items">
+      <li><a href="home.html">Home</a></li>
+
+      <!-- DOG -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('dogDropdown')">Dog ▾</a>
+        <div class="dropdown-content" id="dogDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Dry Food</a><a href="#">Wet Food</a><a href="#">Prescribed Food</a></div>
+          <div class="sub-menu"><h4>Treat</h4><a href="#">Biscuit</a><a href="#">Dental Treats</a><a href="#">Calcium Chew</a><a href="#">Chicken Chew</a></div>
+          <div class="sub-menu"><h4>Clothing</h4><a href="#">Coat</a><a href="#">Jacket</a><a href="#">T-shirt</a><a href="#">Shirt</a></div>
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo</a><a href="#">Wipes</a><a href="#">Growing Tools</a></div>
+        </div>
+      </li>
+
+      <!-- CAT -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('catDropdown')">Cat ▾</a>
+        <div class="dropdown-content" id="catDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Dry Food</a><a href="#">Wet Food</a><a href="#">Prescribed Food</a></div>
+          <div class="sub-menu"><h4>Treat</h4><a href="#">Biscuit</a><a href="#">Dental</a><a href="#">Calcium Chew</a><a href="#">Chicken Chew</a></div>
+          <div class="sub-menu"><h4>Toy</h4><a href="#">Car nip</a><a href="#">Interactive Toys</a><a href="#">Teasure and Wonds</a></div>
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo</a><a href="#">Wipes</a><a href="#">Grooming Tools</a></div>
+        </div>
+      </li>
+
+      <!-- SMALL PETS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('smallDropdown')">Small Pets ▾</a>
+        <div class="dropdown-content" id="smallDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Pellets and Hay</a></div>
+          <div class="sub-menu"><h4>Small Pets Health</h4><a href="#">Supplements</a></div>
+        </div>
+      </li>
+
+      <!-- BIRDS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('birdsDropdown')">Birds ▾</a>
+        <div class="dropdown-content" id="birdsDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Seed Mix</a></div>
+          <div class="sub-menu"><h4>Birds Health</h4><a href="#">Supplements</a></div>
+        </div>
+      </li>
+
+      <!-- GROOMING -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('groomDropdown')">Grooming ▾</a>
+        <div class="dropdown-content" id="groomDropdown">
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo and Conditioner</a><a href="#">Skin and Coat Care</a><a href="#">Wipes</a><a href="#">Gromming Tools</a><a href="#">Perfume</a></div>
+        </div>
+      </li>
+
+      <!-- VETS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('vetsDropdown')">Vets ▾</a>
+        <div class="dropdown-content" id="vetsDropdown">
+          <div class="sub-menu"><h4>VetConsultation👩🏻‍⚕️</h4></div>
+          <div class="sub-menu"><h4>Vet Service🐕‍🦺</h4></div>
+          <div class="sub-menu"><h4>E Pharmacy💊</h4></div>
+          
+      </li>
+
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleDropdown(id) {
+      document.querySelectorAll('.dropdown-content').forEach(el => {
+        el.style.display = el.id === id && el.style.display !== 'flex' ? 'flex' : 'none';
+      });
+    }
+
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(el => el.style.display = 'none');
+      }
+    });
+  </script>
+
+<section class="hero-banner">
+    <div class="overlay"></div>
+    <div class="hero-text">50% OFF</div>
+  </section>
+
+  <section class="category-row">
+    <a href="dog.html" class="category-item">
+      <div class="category-image">
+        <img src="dog.jpg" alt="Dog">
+      </div>
+      <div class="category-label">Dog</div>
+    </a>
+
+    <a href="cat.html" class="category-item">
+      <div class="category-image">
+        <img src="cat.jpg" alt="Cat">
+      </div>
+      <div class="category-label">Cat</div>
+    </a>
+
+    <a href="Bird.html" class="category-item">
+      <div class="category-image">
+        <img src="bird.jpg" alt="Bird">
+      </div>
+      <div class="category-label">Bird</div>
+    </a>
+
+    <a href="rabbit.html" class="category-item">
+      <div class="category-image">
+        <img src="rabbit.jpg" alt="Rabbit">
+      </div>
+      <div class="category-label">Rabbit</div>
+    </a>
+
+    <a href="rabbit.html" class="category-item">
+      <div class="category-image">
+        <img src="vets.jpg" alt="Vet">
+      </div>
+      <div class="category-label">Vets</div>
+    </a>
+
+    <a href="rabbit.html" class="category-item">
+      <div class="category-image">
+        <img src="groom.jpg" alt="Groom">
+      </div>
+      <div class="category-label">Groom</div>
+    </a>
+  </section>
+ <div class="section">
+    <h1>Complete Care for your Dog</h1>
+    <div class="card-wrapper">
+      <div class="card">
+        <div class="half-badge">20% OFF</div>
+        <img src="dogfood.jpg" alt="Dog Food" />
+        <div class="label">Dog Food</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">40% OFF</div>
+        <img src="dogtreat.jpg" alt="Dog Treat" />
+        <div class="label">Dog Treat</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">30% OFF</div>
+        <img src="dogtoy.jpg" alt="Dog Toy" />
+        <div class="label">Dog Toy</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">10% OFF</div>
+        <img src="dogshampoo.jpg" alt="Dog Shampoo" />
+        <div class="label">Shampoo</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h1>Toys, Treats, Feline Favorites</h1>
+    <div class="card-wrapper">
+      <div class="card">
+        <div class="half-badge">20% OFF</div>
+        <img src="catfood.jpg" alt="Cat Food" />
+        <div class="label">Cat Food</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">20% OFF</div>
+        <img src="cattreat.jpg" alt="Cat Treat" />
+        <div class="label">Cat Treat</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">20% OFF</div>
+        <img src="cattoy.jpg" alt="Cat Toy" />
+        <div class="label">Cat Toy</div>
+      </div>
+      <div class="card">
+        <div class="half-badge">20% OFF</div>
+        <img src="catshampoo.jpg" alt="Cat Shampoo" />
+        <div class="label">Shampoo</div>
+      </div>
+    </div>
+  </div>
+
+   <div class="section">
+    <h2>Top Selling Dog Products</h2>
+    <div class="card-row">
+      <div class="card">
+        <img src="catoy1.jpg" alt="Dog Toy">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Pet Toy</div>
+        <div class="price">₹850</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+      <div class="card">
+        <img src="pethoodie.jpg" alt="Dog Hoodie">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Dog Hoodie</div>
+        <div class="price">₹1000</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+      <div class="card">
+        <img src="petsofa.jpg" alt="Pet Sofa">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Pet Sofa</div>
+        <div class="price">₹900</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Top Selling Cat Products</h2>
+    <div class="card-row">
+      <div class="card">
+        <img src="catshampoo.jpg" alt="Cat Toy">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Cat Toy</div>
+        <div class="price">₹780</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+      <div class="card">
+        <img src="petgrooming.jpg" alt="Cat Hoodie">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Cat Hoodie</div>
+        <div class="price">₹920</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+      <div class="card">
+        <img src="dogleash.jpg" alt="Cat Sofa">
+        <div class="stars">★★★★☆</div>
+        <div class="product-name">Cat Sofa</div>
+        <div class="price">₹950</div>
+        <button class="btn">Add To Cart</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="gradient-banner">
+  <img src="doganimated.gif" alt="Left" class="side-img left">
+  <div class="center-text">Free Vaccination For New Born Pets</div>
+  <img src="doganimated.gif" alt="Right" class="side-img right">
+</div>
+
+<h1 style="text-align: center;">Want to add new member to you Family?</h1>
+<br>
+<section>
+  <div class="toggle-container">
+    <div class="toggle-btn" onclick="toggleCards(this)">
+      <div class="slider">Dog</div>
+    </div>
+  </div>
+
+  <div id="cardArea" class="card-container"></div>
+</section>
+<script>
+  const cardArea = document.getElementById("cardArea");
+
+const dogCards = [
+  { img: "td1.jpg", text: "1 Month Labrador Dog", price: "₹16,000" },
+  { img: "td2.jpg", text: "C1 Month Labrador Brown And White Dog", price: "₹19,000" },
+  { img: "td3.jpg", text: "Fluf3 Month Pug Dog", price: "₹18,000" },
+  { img: "td4.jpg", text: "Pomeranian Girl Full White Dog 2 Years", price: "₹10,000" },
+  { img: "td5.jpg", text: "Brown Zidzoo 3 month Dpg", price: "₹11,000" },
+  { img: "td6.jpg", text: "Pomeranian Boy Full Black & White Dog", price: "₹12,000" }
+
+];
+
+const catCards = [
+  { img: "tc1.jpg", text: "Coffee Brown 8 month Kitty", price: "₹6,000" },
+  { img: "tc2.jpg", text: "Milky White 6 month Kitty", price: "₹12,000" },
+  { img: "tc3.jpg", text: "Mix of Brown and White 2 Month Kitty", price: "₹16,000" },
+  { img: "tc4.jpg", text: "Persian Gray 2 year Cat", price: "₹10,000" },
+  { img: "tc5.jpg", text: "Full Black Persian 3 year Cat", price: "₹11,000" },
+  { img: "tc6.jpg", text: "Pomeranian Boy Full Black & White Dog", price: "₹12,000" }
+];
+
+function renderCards(cardsArray) {
+  cardArea.innerHTML = "";
+  cardsArray.forEach(card => {
+    const cardEl = document.createElement("div");
+    cardEl.className = "card";
+    cardEl.innerHTML = `
+      <img src="${card.img}" alt="Pet Image">
+      <div class="label-text">${card.text}</div>
+      <div class="price-text">Price: ${card.price}</div>
+      <button>Adopt Me</button>
+    `;
+    cardArea.appendChild(cardEl);
+  });
+}
+function toggleCards(toggleEl) {
+  toggleEl.classList.toggle("active");
+  const isCat = toggleEl.classList.contains("active");
+
+  const label = toggleEl.querySelector(".slider");
+  label.textContent = isCat ? "Cat" : "Dog";
+
+  renderCards(isCat ? catCards : dogCards);
+}
+
+// Initial view
+renderCards(dogCards);
+</script>
+<section class="review-section">
+  <div class="review-header">
+    <div class="review-title">
+      <h1>
+      <span style="color:#e63946;">G</span>
+      <span style="color:#f1a208;">o</span>
+      <span style="color:#2a9d8f;">o</span>
+      <span style="color:#457b9d;">g</span>
+      <span style="color:#9d4edd;">l</span>
+      <span style="color:#e76f51;">e</span>
+       &nbsp;
+      <span style="color:#070808;">R</span>
+      <span style="color:#0a0a08;">e</span>
+      <span style="color:#0d0d0e;">v</span>
+      <span style="color:#080808;">i</span>
+      <span style="color:#080808;">e</span>
+      <span style="color:#0a0a0a;">w</span>
+      <span style="color:#080808;">s</span>
+    </h1>
+      <p class="review-rating">4.8 <span class="stars">★★★★★</span></p>
+    </div>
+    <button class="review-btn">Review Us On Google</button>
+  </div>
+
+  <div class="review-cards">
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">It’s Very Good</p>
+       <img src="salima.jpg" alt="Salima" />
+       <h5>Salima</h5>
+<h6 style="font-size: 0.75rem; color: grey;">3 Day Ago</h6>   
+ </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">The range of pet products are incredible</p>
+       <img src="john1.jpg" alt="John 1" />
+       <h5>John</h5>
+      <h6 style="font-size: 0.75rem; color: grey;">4 Day Ago</h6>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">I had an amazing experience with Buffy Pets</p>
+       <img src="john2.jpg" alt="John 2" />
+        <h5>John</h5>
+      <h6 style="font-size: 0.75rem; color: grey;">4 Day Ago</h6>
+    </div>
+    <div class="review-card">
+      <div class="stars">★★★★★</div>
+      <p class="review-text">Reasonable price and good products</p>
+      <img src="john3.jpg" alt="John 3" />
+       <h5>John</h5>
+      <h6 style="font-size: 0.75rem; color: grey;">4 Day Ago</h6>
+    </div>
+  </div>
+</section>
+
+<h2 style="text-align:center;">Health Tips by Experts</h2>
+
+<div class="health-card-row">
+  <!-- Card 1 -->
+  <div>
+    <div class="health-card">
+      <div class="health-card-left">
+        <span>Understanding Castration In Pets</span>
+        <svg class="wave" viewBox="0 0 500 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient1">
+              <stop offset="0%" stop-color="#0f0f0f" />
+              <stop offset="100%" stop-color="#8d918e" />
+            </linearGradient>
+          </defs>
+          <path d="M0,30 C150,90 350,0 500,60 L500,100 L0,100 Z" fill="url(#gradient1)" />
+        </svg>
+      </div>
+      <div class="health-card-right">
+        <img src="v2.jpg" alt="Castration Image" />
+      </div>
+    </div>
+    <p class="health-card-text">Understanding Castration In Pets</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div>
+    <div class="health-card">
+      <div class="health-card-left">
+        <span>Multivitamins For Pets</span>
+        <svg class="wave" viewBox="0 0 500 100" preserveAspectRatio="none">
+          <defs>
+            <linearGradient id="gradient2">
+              <stop offset="0%" stop-color="#070707" />
+              <stop offset="100%" stop-color="#969394" />
+            </linearGradient>
+          </defs>
+          <path d="M0,30 C150,90 350,0 500,60 L500,100 L0,100 Z" fill="url(#gradient2)" />
+        </svg>
+      </div>
+      <div class="health-card-right">
+        <img src="v1.jpg" alt="Multivitamin Image" />
+      </div>
+    </div>
+    <p class="health-card-text">Multivitamins For Pets</p>
+  </div>
+</div>
+<center>
+  <button style="background-color: rgb(9, 123, 158); color: white; font-weight: bold; width: 200px; padding: 10px; border: none; border-radius: 10px;">
+    View More
+  </button>
+</center>
+<br>
+<br>
+
+<div style="text-align: center; color: black; font-family: 'Poppins', sans-serif; font-size: 24px; font-weight: 600;">
+ Explore Our Communities
+
+</div>
+<br>
+<br>
+
+ <div class="com-card-row">
+    <!-- Card 1 -->
+    <div class="com-card">
+      <div class="com-image">
+        <img src="tex1.gif" alt="Understanding Castration">
+      </div>
+      <div class="com-card-content">
+        <p>Building Information & Communication of Pet Parents &animal Lovers Passionate.........</p>
+        <span class="com-card-link">Read More</span>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="com-card-row">
+      <div class="com-card">
+      <div class="com-card-image">
+        <img src="e2.jpg" alt="Multivitamins For Pets">
+      </div>
+      <div class="com-card-content">
+        <p>Family Beagan is your safe haven for all pet information, dissucition and content..........</p>
+        <span class="com-card-link">Read More</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="faq-section">
+  <h2>FAQs</h2>
+
+  <div class="faq">
+    <h3>1. Can I find all the pet supplies I need at Buffy Pet Shop near me?</h3>
+    <p>Yes, just search with a pet shop near me to locate Buffy and look for your preferred pet products. We offer a complete range of pet supplies, including pet food, pet toys, pet beds, pet accessories, and pet grooming Supplies.</p>
+</div>
+<div class="faq">
+    <h3>2. What services are available at the Buffy pet store near me?</h3>
+    <p>Buffy pet stores provide expert vet consultations, professional pet grooming, access to our pet Pharmacy, and personalized advice on pet care, pet products, and nutrition for your furry friends.</p>
+</div>
+<div class="faq">
+    <h3>3. How can I ensure I’m buying the best pet food online at Buffy Pets?</h3>
+    <p>Buffy's online pet store feature top brands like pedigree, Royal Canin, Whiskas, and Sheba, helping you choose high-quality, nutritious pet food online based on you pet's needs.</p>
+</div>
+    <div class="faq">
+    <h3>4. Are there any benefits to visiting a Buffy pet shop in person?</h3>
+    <p>Yes, visiting our pet store lets you explore products firsthand, attend in-store events, get expert advice, and access services like vet consultations and pet spa treatments.</p>
+</div>
+<div class="faq">
+    <h3>5. How do I find the nearest Buffy pet store to me?</h3>
+    <p>You can locate the nearest Buffy pet store easily by using our store locator on the Buffy website or contacting our customer support.</p>
+  </div>
+</section>
+</body>
+ <footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Track Your Order</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Service</h3>
+      <ul>
+        <li><a href="#">Pet Grooming</a></li>
+        <li><a href="#">Vet Consultation</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Happy Pets</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section subscribe">
+      <h3>Get in Touch for Offers</h3>
+      <form class="input-with-button">
+        <input type="email" placeholder="Enter your mail id">
+        <button type="submit">Submit</button>
+      </form>
+      <p>Reach us: <a href="mailto:support@buffy.com">support@buffy.com</a></p>
+      <p>Join our Zigly community to receive exciting updates, services, and expert pet care tips.</p>
+    </div>
+  </div>
+
+  <!-- Bottom anchors -->
+  <div class="footer-bottom-left">
+  <img src="free2.jpg" alt="Free shipping" width="75">
+  <p>Free Shipping on order all above 700</p>
+   <img src="free2.jpg" alt="Free easy return" width="75">
+  <p>Easy Return Policy</p>
+  </div>
+  <div class="footer-bottom-right">
+    <h3>Connect With Us</h3>
+    <div class="social-icons">
+      <a href="#"><img src="face.jpg" alt="Facebook"></a>
+      <a href="#"><img src="youtube.jpg" alt="YouTube"></a>
+      <a href="#"><img src="inst.jpg" alt="Instagram"></a>
+    </div>
+  </div>
+</footer>
+</html>
