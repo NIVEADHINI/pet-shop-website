@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Buffy Pets Header</title>
+
+  <!-- 🎨 Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: lightblue;
+    }
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 30px;
+  background-color: #4b85a0;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  height: 60px;
+  object-fit: contain;
+  display: block;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+}
+
+.text img {
+  height: 45px;
+  object-fit: contain;
+  display: block;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.actions input[type="text"] {
+  padding: 8px 14px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  transition: border-color 0.3s ease;
+}
+
+.actions input[type="text"]:focus {
+  border-color: #15757B;
+  outline: none;
+}
+
+.emoji {
+  font-size: 22px;
+  cursor: pointer;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.emoji:hover {
+  transform: scale(1.2);
+  filter: drop-shadow(0 0 4px #15757B);
+}
+    
+    /* 📱 Responsive Media Queries */
+    @media screen and (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .logo {
+        flex-direction: column;
+        margin-bottom: 10px;
+      }
+
+      .logo img {
+        width: 40px;
+        height: 40px;
+        margin: 0 0 5px;
+      }
+
+      .logo h1 {
+        font-size: 28px;
+      }
+
+      .actions {
+        width: 100%;
+        margin-top: 10px;
+      }
+
+      .actions input {
+        flex: 1 1 100%;
+        margin: 10px 0;
+        font-size: 14px;
+      }
+
+      .emoji {
+        font-size: 20px;
+        margin: 5px;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      .logo h1 {
+        font-size: 22px;
+      }
+
+      .emoji {
+        font-size: 18px;
+      }
+    }
+nav.nav-bar {
+      background-color: #15757B;
+      padding: 10px 20px;
+    }
+
+    .nav-items {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-items > li {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .nav-items a {
+      text-decoration: none;
+      color: white;
+      font-weight: 600;
+      padding: 8px 12px;
+      display: block;
+      transition: background 0.3s;
+      cursor: pointer;
+    }
+
+    .nav-items a:hover {
+      background-color: #0056b3;
+      border-radius: 4px;
+    }
+
+    .dropdown-content {
+      display: none; /* ✅ hidden by default */
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #ffffff;
+      padding: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      flex-direction: row;
+      gap: 30px;
+      z-index: 99;
+    }
+
+    .sub-menu {
+      min-width: 150px;
+    }
+
+    .sub-menu h4 {
+      margin: 0 0 10px;
+      color: #ec140c;
+      font-size: 16px;
+    }
+
+    .sub-menu a {
+      display: block;
+      margin: 5px 0;
+      color: #333;
+      font-weight: normal;
+    }
+
+    .sub-menu a:hover {
+      text-decoration: underline;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-items {
+        flex-direction: column;
+      }
+
+      .nav-items > li {
+        margin-bottom: 10px;
+      }
+
+      .dropdown-content {
+        position: static;
+        flex-direction: column;
+        box-shadow: none;
+        padding: 10px 0;
+      }
+    }
+    #vetsDropdown {
+        flex-direction: column;
+    }
+     footer {
+  position: relative;
+  background-color: #006d6d;
+  color: white;
+  padding: 60px 20px 120px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer-section {
+  flex: 1 1 250px;
+}
+
+.footer-section h3 {
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-section ul li {
+  margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-section ul li a:hover {
+  text-decoration: underline;
+}
+
+.input-with-button {
+  position: relative;
+  width: 90%; /* Container width stays the same */
+}
+
+.input-with-button input {
+  width: 70%;  /* 👈 Reduced from 90% to 70% */
+  padding: 10px 12px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  font-size: 1em;
+}
+
+.input-with-button button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  padding: 0 20px;
+  background-color: #e63838;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  font-size: 1em;
+}
+.input-with-button button:hover {
+  background-color: #c62828;
+}
+
+.subscribe p {
+  margin-top: 10px;
+  font-size: 0.9em;
+}
+
+/* Bottom Left Shipping */
+.footer-bottom-left {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgb(240, 236, 236);
+  color: black;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 0.95em;
+}
+
+/* Bottom Right Social */
+.footer-bottom-right {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  text-align: right;
+}
+
+.social-icons a {
+  display: inline-block;
+  margin-left: 12px;
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s ease;
+}
+
+.social-icons a:hover img {
+  transform: scale(1.1);
+}
+
+/* Responsive tweaks */
+@media screen and (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+  }
+
+  .footer-bottom-left,
+  .footer-bottom-right {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
+  }
+}
+ 
+h1 {
+  background-color: #d0e4ff;
+  padding: 20px;
+  margin: 0;
+  color: #333;
+  text-align: center;
+}
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin: 30px 0;
+}
+
+.custom-button {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.custom-button img {
+  width: 50px;
+  height: 50px;
+  margin-right: 12px;
+}
+
+.divider {
+  width: 2px;
+  height: 30px;
+  background-color: black;
+  margin-right: 12px;
+}
+
+.section-title {
+  font-size: 22px;
+  margin: 40px 0 20px;
+  color: #444;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  justify-items: center;
+}
+
+.card {
+  border: 2px solid black;
+  padding: 10px;
+  width: 200px;
+  background-color: rgb(240, 229, 220);
+}
+
+.card img {
+  width: 100%;
+  border: 2px solid black;
+}
+
+.card .price {
+  color: red;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.card button {
+  border: 2px solid black;
+  background-color: #f0f0f0;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, #ff9ff3, #feca57, #54a0ff);
+  padding: 60px;
+  margin: 30px 20px;
+  border-radius: 12px;
+  position: relative;
+}
+
+.banner img {
+  width: 200px;
+  height: 200px;
+}
+
+.banner-text {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: black;
+  text-shadow: 2px 2px yellow;
+  font-weight: bold;
+  font-size: 25px;
+  max-width: 50%;
+  text-align: justify;
+}
+
+/* Hide all content sections initially */
+.content-section {
+  display: none;
+}
+
+/* Show selected section */
+.active-section {
+  display: block;
+}
+.vets-banner{
+    display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(45deg, #949294, #405eaf, #022550);
+  padding: 60px;
+  margin: 30px 20px;
+  border-radius: 12px;
+  position: relative;
+}
+.vets-banner img {
+  width: 200px;
+  height: 200px;
+}
+
+.banner-vet-text {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  color: rgb(238, 234, 234);
+  font-weight: bold;
+  font-size: 25px;
+  max-width: 50%;
+  text-align: justify;
+}
+
+
+</style>
+<body>
+</head>
+
+ <header>
+    <div class="logo">
+      <img src="h1.gif" alt="Animated Dog">
+    </div>
+    <div class="text">
+      <img src="Text.gif" alt="Animated Text">
+    </div>
+    <div class="actions">
+      <input type="text" placeholder="Search">
+      <span class="emoji">📍</span>
+      <span class="emoji">👤</span>
+      <span class="emoji">🛒</span>
+    </div>
+  </header>
+
+  <body>
+
+  <nav class="nav-bar">
+    <ul class="nav-items">
+      <li><a href="home.html">Home</a></li>
+
+      <!-- DOG -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('dogDropdown')">Dog ▾</a>
+        <div class="dropdown-content" id="dogDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Dry Food</a><a href="#">Wet Food</a><a href="#">Prescribed Food</a></div>
+          <div class="sub-menu"><h4>Treat</h4><a href="#">Biscuit</a><a href="#">Dental Treats</a><a href="#">Calcium Chew</a><a href="#">Chicken Chew</a></div>
+          <div class="sub-menu"><h4>Clothing</h4><a href="#">Coat</a><a href="#">Jacket</a><a href="#">T-shirt</a><a href="#">Shirt</a></div>
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo</a><a href="#">Wipes</a><a href="#">Growing Tools</a></div>
+        </div>
+      </li>
+
+      <!-- CAT -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('catDropdown')">Cat ▾</a>
+        <div class="dropdown-content" id="catDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Dry Food</a><a href="#">Wet Food</a><a href="#">Prescribed Food</a></div>
+          <div class="sub-menu"><h4>Treat</h4><a href="#">Biscuit</a><a href="#">Dental</a><a href="#">Calcium Chew</a><a href="#">Chicken Chew</a></div>
+          <div class="sub-menu"><h4>Toy</h4><a href="#">Car nip</a><a href="#">Interactive Toys</a><a href="#">Teasure and Wonds</a></div>
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo</a><a href="#">Wipes</a><a href="#">Grooming Tools</a></div>
+        </div>
+      </li>
+
+      <!-- SMALL PETS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('smallDropdown')">Small Pets ▾</a>
+        <div class="dropdown-content" id="smallDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Pellets and Hay</a></div>
+          <div class="sub-menu"><h4>Small Pets Health</h4><a href="#">Supplements</a></div>
+        </div>
+      </li>
+
+      <!-- BIRDS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('birdsDropdown')">Birds ▾</a>
+        <div class="dropdown-content" id="birdsDropdown">
+          <div class="sub-menu"><h4>Food</h4><a href="#">Seed Mix</a></div>
+          <div class="sub-menu"><h4>Birds Health</h4><a href="#">Supplements</a></div>
+        </div>
+      </li>
+
+      <!-- GROOMING -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('groomDropdown')">Grooming ▾</a>
+        <div class="dropdown-content" id="groomDropdown">
+          <div class="sub-menu"><h4>Grooming</h4><a href="#">Shampoo and Conditioner</a><a href="#">Skin and Coat Care</a><a href="#">Wipes</a><a href="#">Gromming Tools</a><a href="#">Perfume</a></div>
+        </div>
+      </li>
+
+      <!-- VETS -->
+      <li class="dropdown">
+        <a onclick="toggleDropdown('vetsDropdown')">Vets ▾</a>
+        <div class="dropdown-content" id="vetsDropdown">
+          <div class="sub-menu"><h4>VetConsultation👩🏻‍⚕️</h4></div>
+          <div class="sub-menu"><h4>Vet Service🐕‍🦺</h4></div>
+          <div class="sub-menu"><h4>E Pharmacy💊</h4></div>
+          
+      </li>
+
+      <li><a href="#">Contact Us</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function toggleDropdown(id) {
+      document.querySelectorAll('.dropdown-content').forEach(el => {
+        el.style.display = el.id === id && el.style.display !== 'flex' ? 'flex' : 'none';
+      });
+    }
+
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.dropdown')) {
+        document.querySelectorAll('.dropdown-content').forEach(el => el.style.display = 'none');
+      }
+    });
+  </script>
+  <br>
+  
+ 
+  <h1>Dogs</h1>
+
+  <!-- Buttons -->
+  <div class="button-row">
+    <div class="custom-button">
+      <img src="catbt1.jpg" alt="Icon" />
+      <div class="divider"></div>
+      <div>All</div>
+    </div>
+    <div class="custom-button">
+      <img src="catbt2.jpg" alt="Icon" />
+      <div class="divider"></div>
+      <div>Cat Food</div>
+    </div>
+    <div class="custom-button">
+      <img src="catbt3.jpg" alt="Icon" />
+      <div class="divider"></div>
+      <div>Clothing</div>
+    </div>
+    <div class="custom-button">
+      <img src="catbt4.jpg" alt="Icon" />
+      <div class="divider"></div>
+      <div>Vet Products</div>
+    </div>
+  </div>
+
+  <!-- Button 1 Content -->
+  <div id="section1" class="content-section active-section">
+    <h1>CATS</h1>
+<div class="card-grid">
+    <div class="card"><img src="cata1.jpg" /><div>⭐4.5</div><div>Pet Toy</div><div class="price">₹100</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata2.jpg" /><div>⭐4.0</div><div>Dog Dress</div><div class="price">₹200</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata3.jpg" /><div>⭐4.5</div><div>Dog Lash</div><div class="price">₹300</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="cata4.jpg" /><div>⭐4.2</div><div>Belt</div><div class="price">₹400</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata5.jpg" /><div>⭐4.5</div><div>Dog Belt</div><div class="price">₹500</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata6.jpg" /><div>⭐4.0</div><div>Dog Sofa</div><div class="price">₹600</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="cata7.jpg" /><div>⭐4.2</div><div>Belt</div><div class="price">₹400</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata8.jpg" /><div>⭐4.5</div><div>Dog Belt</div><div class="price">₹500</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata9.jpg" /><div>⭐4.0</div><div>Dog Sofa</div><div class="price">₹600</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="cata10.jpg" /><div>⭐4.2</div><div>Belt</div><div class="price">₹400</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata11.jpg" /><div>⭐4.5</div><div>Dog Belt</div><div class="price">₹500</div><button>Add to Cart</button></div>
+    <div class="card"><img src="cata12.jpg" /><div>⭐4.0</div><div>Dog Sofa</div><div class="price">₹600</div><button>Add to Cart</button></div>
+  </div>
+</div>
+
+<!-- Button 2 Content -->
+  <div id="section2" class="content-section">
+    <h1>Cat Food</h1>
+  <div class="card-grid">
+    <div class="card"><img src="catf1.jpg" /><div>⭐4.5</div><div>Carniwel</div><div class="price">₹700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf2.jpg" /><div>⭐4.2</div><div>Carniwel</div><div class="price">₹800</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf3.jpg" /><div>⭐4.0</div><div>Carniwel</div><div class="price">₹900</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="catf4.jpg" /><div>⭐4.5</div><div>Pedigree</div><div class="price">₹1000</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf5.jpg" /><div>⭐4.2</div><div>Sank</div><div class="price">₹1100</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf6.jpg" /><div>⭐4.1</div><div>Fresh Lamb</div><div class="price">₹1200</div><button>Add to Cart</button></div>
+  </div>
+  
+  <div class="card-grid">
+    <div class="card"><img src="catf7.jpg" /><div>⭐4.5</div><div>Back Hawak</div><div class="price">₹1600</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf8.jpg" /><div>⭐4.3</div><div>One Plus</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf9.jpg" /><div>⭐4.2</div><div>Royal Canin</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    </div>
+    <div class="card-grid">
+    <div class="card"><img src="catf10.jpg" /><div>⭐4.0</div><div>Proactive Health</div><div class="price">₹1600</div><button>Add to cart</button></div>
+    <div class="card"><img src="catf11.jpg" /><div>⭐4.5</div><div>VetLife</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catf12.jpg" /><div>⭐4.7</div><div>Every Dawg</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    </div>
+    </div>
+    
+    <div id="section3" class="content-section">
+<h1>Clothing</h1>
+  <div class="card-grid">
+    <div class="card"><img src="catc1.jpg" /><div>⭐4.5</div><div>Pet Toy</div><div class="price">₹700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc2.jpg" /><div>⭐4.1</div><div>Duck Toy</div><div class="price">₹800</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc3.jpg" /><div>⭐4.5</div><div>Dog Ball</div><div class="price">₹900</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="catc4.jpg" /><div>⭐4.0</div><div>Squesh</div><div class="price">₹1000</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc5.jpg" /><div>⭐4.5</div><div>Dog Toy</div><div class="price">₹1100</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc6.jpg" /><div>⭐4.1</div><div>Squeshy</div><div class="price">₹1200</div><button>Add to Cart</button></div>
+  </div>
+<div class="card-grid">
+    <div class="card"><img src="catc7.jpg" /><div>⭐4.0</div><div>Boan</div><div class="price">₹1300</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc8.jpg" /><div>⭐4.0</div><div>Duck Toy</div><div class="price">₹1400</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc9.jpg" /><div>⭐4.5</div><div>Boan</div><div class="price">₹1500</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="catc10.jpg" /><div>⭐4.5</div><div>Dog Toy</div><div class="price">₹1600</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc11.jpg" /><div>⭐4.5</div><div>Boan</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catc12.jpg" /><div>⭐4.5</div><div>Boan</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    </div>
+</div>
+
+  <div id="section4" class="content-section">
+<h1>Vets</h1>
+  <div class="card-grid">
+    <div class="card"><img src="catv1.jpg" /><div>⭐4.5</div><div>Pet Toy</div><div class="price">₹700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv2.jpg" /><div>⭐4.0</div><div>Duck Ball</div><div class="price">₹800</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv3.jpg" /><div>⭐4.1</div><div>Doy Ball</div><div class="price">₹900</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="catv4.jpg" /><div>⭐4.5</div><div>Squesh</div><div class="price">₹1000</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv5.jpg" /><div>⭐4.2</div><div>Dog Toy</div><div class="price">₹1100</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv6.jpg" /><div>⭐4.5</div><div>Squeashy</div><div class="price">₹1200</div><button>Add to Cart</button></div>
+  </div>
+ <div class="vets-banner">
+    <img src="dogvban.gif" />
+    <div class="banner-vet-text">For free Consultation Call Our Toll Free Number +91 987654321</div>
+  </div>
+
+<div class="card-grid">
+    <div class="card"><img src="catv7.jpg" /><div>⭐4.5</div><div>Boan</div><div class="price">₹1300</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv8.jpg" /><div>⭐4.0</div><div>Squesh</div><div class="price">₹1400</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv9.jpg" /><div>⭐4.5</div><div>Boan</div><div class="price">₹1500</div><button>Add to Cart</button></div>
+  </div>
+  <div class="card-grid">
+    <div class="card"><img src="catv10.jpg" /><div>⭐4.5</div><div>Duck Toy</div><div class="price">₹1600</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv11.jpg" /><div>⭐4.1</div><div>Boan</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    <div class="card"><img src="catv12.jpg" /><div>⭐4.5</div><div>Dog Toy</div><div class="price">₹1700</div><button>Add to Cart</button></div>
+    </div>
+    </div>
+  <script>
+  const buttons = document.querySelectorAll('.custom-button');
+  const sections = document.querySelectorAll('.content-section');
+
+  buttons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      // Remove active class from all buttons
+      buttons.forEach(btn => btn.classList.remove('clicked'));
+      button.classList.add('clicked');
+
+      // Hide all sections
+      sections.forEach(section => section.classList.remove('active-section'));
+
+      // Show the corresponding section
+      const target = document.querySelector(`#section${index + 1}`);
+      if (target) target.classList.add('active-section');
+    });
+  });
+</script>
+  </body>
+<footer>
+  <div class="footer-container">
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Contact Us</a></li>
+        <li><a href="#">FAQs</a></li>
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Track Your Order</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Service</h3>
+      <ul>
+        <li><a href="#">Pet Grooming</a></li>
+        <li><a href="#">Vet Consultation</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h3>Explore</h3>
+      <ul>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="#">Happy Pets</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section subscribe">
+      <h3>Get in Touch for Offers</h3>
+      <form class="input-with-button">
+        <input type="email" placeholder="Enter your mail id">
+        <button type="submit">Submit</button>
+      </form>
+      <p>Reach us: <a href="mailto:support@buffy.com">support@buffy.com</a></p>
+      <p>Join our Zigly community to receive exciting updates, services, and expert pet care tips.</p>
+    </div>
+  </div>
+
+  <!-- Bottom anchors -->
+  <div class="footer-bottom-left">
+  <img src="free2.jpg" alt="Free shipping" width="75">
+  <p>Free Shipping on order all above 700</p>
+   <img src="free2.jpg" alt="Free easy return" width="75">
+  <p>Easy Return Policy</p>
+  </div>
+  <div class="footer-bottom-right">
+    <h3>Connect With Us</h3>
+    <div class="social-icons">
+      <a href="#"><img src="face.jpg" alt="Facebook"></a>
+      <a href="#"><img src="youtube.jpg" alt="YouTube"></a>
+      <a href="#"><img src="inst.jpg" alt="Instagram"></a>
+    </div>
+  </div>
+</footer>
+</html>
